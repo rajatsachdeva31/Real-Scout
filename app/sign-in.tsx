@@ -5,13 +5,24 @@ import {
   Image,
   View,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React from "react";
 import images from "@/constants/images";
 import icons from "@/constants/icons";
+import { login } from "@/lib/appwrite";
+import { useGlobalContext } from "@/lib/global-provider";
 
 const SignIn = () => {
-  const handleLogin = () => {};
+  const { refetch, loading, isLoggedIn } = useGlobalContext();
+  const handleLogin = async () => {
+    const result = await login();
+    if (result) {
+      console.log("Logged in successfully");
+    } else {
+      console.log("Failed to login");
+    }
+  };
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -29,8 +40,8 @@ const SignIn = () => {
             Let's Get You Closer{"\n"}To
             <Text className="text-primary-default"> Your Dream Home</Text>
           </Text>
-          <Text className="mt-8 text-lg text-center text-secondary-medium">
-            Login to RealScout with Google
+          <Text className="mt-8 text-lg text-center font-rubik text-secondary-medium">
+            Login to RealScout
           </Text>
           <TouchableOpacity
             onPress={handleLogin}
