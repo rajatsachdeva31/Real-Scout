@@ -28,6 +28,7 @@ const Filters = () => {
       {categories.map((item, index) => (
         <TouchableOpacity
           onPress={() => handleCategory(item.category)}
+          key={index}
           className={`mr-4 px-4 py-2 rounded-full ${
             selectedCatagory === item.category
               ? "bg-primary-default"
