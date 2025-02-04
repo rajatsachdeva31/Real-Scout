@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import images from "@/constants/images";
 import icons from "@/constants/icons";
 import Search from "@/components/Search";
 import { Card, FeaturedCard } from "@/components/Cards";
@@ -60,7 +59,7 @@ const index = () => {
         renderItem={({ item }) => (
           <Card item={item} onPress={() => handleCardPress(item.$id)} />
         )}
-        keyExtractor={(item) => item.toString()}
+        keyExtractor={(item) => item.$id}
         numColumns={2}
         contentContainerStyle={{ paddingBottom: 70 }}
         columnWrapperClassName="flex gap-5 px-5 pb-5"
@@ -104,7 +103,7 @@ const index = () => {
                     onPress={() => handleCardPress(item.$id)}
                   />
                 )}
-                keyExtractor={(item) => item.toString()}
+                keyExtractor={(item) => item.$id}
                 bounces={false}
                 horizontal
                 showsHorizontalScrollIndicator={false}
